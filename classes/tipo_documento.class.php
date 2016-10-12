@@ -34,7 +34,6 @@ class tipo_documento {
 				if(mysql_num_rows($this->stmt)) 
 				
 				{
-				echo "<center><div  class='alert alert-info'> LA PERSONA YA EXISTE EN EL SISTEMA !!</div></center>";	
 				return true;
 				}  
 				else
@@ -57,15 +56,14 @@ class tipo_documento {
 			$this->stmt = $this->conexion->ejecutar($this->query);
 				if($this->stmt)
 				{
-				echo "<center><div  class='alert alert-success'> ".$this->AT_nombre_tipo_documento." FUE REGISTRADO  EXITOSAMENTE! </div></center>";
+			
 				$this->GT = new GestionarTipo_documento ($this->AT_id_tipo_documento);
 				return $this->GT -> consultar();		
 				}
 				else
-					echo $this->query;
-					{
+								{
 	
-					echo "<center><div class='alert alert-error'> SE ENCONTRÓ UN ERROR INTENTANDO REALIZAR EL REGISTRO, CONTACTE EL ADMINISTRADOR! (ERROR EN LA CONSULTA)</div></center>";
+					
 					}
 					
 			}
@@ -84,13 +82,13 @@ class tipo_documento {
 		$this->stmt = $this->conexion->ejecutar($this->query);
 			if($this->stmt)
 			{
-			echo "<center><div  class='alert alert-success'>LOS DATOS ".$this->AT_nombre_tipo_documento." SE MODIFICARON SATISFACTORIAMENTE!</div></center>";
+			
 			$this->GT = new GestionarTipo_documento($this->AT_id_tipo_documento);
 			return $this->GT -> consultar();
 			}
 			else
 				{
-				echo "<center><div class='alert alert-error'> NO FUE POSIBLE ACTUALIZAR LA INFORMACIÓN, CONTACTE EL ADMINISTRADOR! (ERROR EN LA CONSULTA)</div></center>";
+				
 				}
 
 	}
@@ -126,15 +124,11 @@ class GestionarTipo_documento {
 				{
 					$this->limpiar();
 				
-			
-					
-					echo "<center><div  class='alert alert-success'> SE HA ELIMINADO EL REGISTRO DE MANERA CORRECTA!! </div></center>";
 					
 				} 
 				else 
 				{
-					
-					echo  "<center><div class='alert alert-error'> NO FUE POSIBLE ELIMINAR EL REGISTRO, CONTACTE EL ADMINISTRADOR! (ERROR EN LA CONSULTA)</div></center>";
+				
 				
 				}
 						
@@ -147,7 +141,7 @@ class GestionarTipo_documento {
 	
 	  	$this->query = sprintf("SELECT id_tipo_documento,nombre_tipo_documento,estado_habilitado FROM pruebita.tipo_documento WHERE id_tipo_documento = '%s'",
 		mysql_real_escape_string($this->p_id_tipo_documento));
-		//echo $this->query;
+		
 		$stmt= $this->conexion->ejecutar($this->query);	
 		$x = $this->conexion->obtener_fila($stmt,0);
 		if($x>0)
@@ -165,7 +159,7 @@ class GestionarTipo_documento {
 			$this->limpiar();	
 			
 			 }
-			echo "$status";
+	
 			}
 	  
 	public function limpiar()

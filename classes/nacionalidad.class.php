@@ -34,7 +34,6 @@ class nacionalidad {
 				if(mysql_num_rows($this->stmt)) 
 				
 				{
-				echo "<center><div  class='alert alert-info'> LA PERSONA YA EXISTE EN EL SISTEMA !!</div></center>";	
 				return true;
 				}  
 				else
@@ -57,13 +56,12 @@ class nacionalidad {
 			$this->stmt = $this->conexion->ejecutar($this->query);
 				if($this->stmt)
 				{
-				echo "<center><div  class='alert alert-success'> ".$this->AT_nombre_nacionalidad." FUE REGISTRADO  EXITOSAMENTE! </div></center>";
+				
 				$this->GT = new GestionarNacionalidad ($this->AT_id_nacionalidad);
 				return $this->GT -> consultar();		
 				}
 				else
 					{
-					echo "<center><div class='alert alert-error'> SE ENCONTRÓ UN ERROR INTENTANDO REALIZAR EL REGISTRO, CONTACTE EL ADMINISTRADOR! (ERROR EN LA CONSULTA)</div></center>";
 					}
 					
 			}
@@ -82,14 +80,12 @@ class nacionalidad {
 		$this->stmt = $this->conexion->ejecutar($this->query);
 			if($this->stmt)
 			{
-			echo "<center><div  class='alert alert-success'>LOS DATOS ".$this->AT_nombre_nacionalidad." SE MODIFICARON SATISFACTORIAMENTE!</div></center>";
 			$this->GT = new GestionarNacionalidad($this->AT_id_nacionaidad);
 			return $this->GT -> consultar();
 			}
 			else
 				{
-				echo "<center><div class='alert alert-error'> NO FUE POSIBLE ACTUALIZAR LA INFORMACIÓN, CONTACTE EL ADMINISTRADOR! (ERROR EN LA CONSULTA)</div></center>";
-				}
+								}
 
 	}
 }
@@ -123,16 +119,12 @@ class GestionarNacionalidad {
 				
 				{
 					$this->limpiar();
-					echo $this->p_id_nacionalidad;
-			
 					
-					echo "<center><div  class='alert alert-success'> SE HA ELIMINADO EL REGISTRO DE MANERA CORRECTA!! </div></center>";
-					
+						
 				} 
 				else 
 				{
-					
-					echo  "<center><div class='alert alert-error'> NO FUE POSIBLE ELIMINAR EL REGISTRO, CONTACTE EL ADMINISTRADOR! (ERROR EN LA CONSULTA)</div></center>";
+				
 				
 				}
 						
@@ -145,7 +137,6 @@ class GestionarNacionalidad {
 	
 	  	$this->query = sprintf("SELECT id_nacionalidad,nombre_nacionalidad,estado_habilitado FROM pruebita.nacionalidad WHERE id_nacionalidad = '%s'",
 		mysql_real_escape_string($this->p_id_nacionalidad));
-		//echo $this->query;
 		$stmt= $this->conexion->ejecutar($this->query);	
 		$x = $this->conexion->obtener_fila($stmt,0);
 		if($x>0)
@@ -163,7 +154,6 @@ class GestionarNacionalidad {
 			$this->limpiar();	
 			
 			 }
-			echo "$status";
 			}
 	  
 	public function limpiar()

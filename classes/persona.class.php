@@ -49,7 +49,6 @@ class Persona {
 				if(mysql_num_rows($this->stmt)) 
 				
 				{
-				echo "<center><div  class='alert alert-info'> LA PERSONA YA EXISTE EN EL SISTEMA !!</div></center>";	
 				return true;
 				}  
 				else
@@ -80,14 +79,13 @@ class Persona {
 			if($this->stmt)
 			
 				{
-				echo $this->query;
-				echo "<center><div  class='alert alert-success'> ".$this->AT_nombre_persona." FUE REGISTRADO  EXITOSAMENTE! </div></center>";
+						
 				$this->GT = new GestionarPersona($this->AT_id_persona);
 				return $this->GT -> consultar();		
 				}
 				else
 					{
-					echo "<center><div class='alert alert-error'> SE ENCONTRÓ UN ERROR INTENTANDO REALIZAR EL REGISTRO, CONTACTE EL ADMINISTRADOR! (ERROR EN LA CONSULTA)</div></center>";
+					
 					}
 					
 			}
@@ -114,13 +112,13 @@ class Persona {
 		$this->stmt = $this->conexion->ejecutar($this->query);
 			if($this->stmt)
 			{
-			echo "<center><div  class='alert alert-success'>LOS DATOS ".$this->AT_nombre_persona." SE MODIFICARON SATISFACTORIAMENTE!</div></center>";
+			
 			$this->GT = new GestionarPersona($this->AT_id_persona);
 			return $this->GT -> consultar();
 			}
 			else
 				{
-				echo "<center><div class='alert alert-error'> NO FUE POSIBLE ACTUALIZAR LA INFORMACIÓN, CONTACTE EL ADMINISTRADOR! (ERROR EN LA CONSULTA)</div></center>";
+				
 				}
 
 	}
@@ -156,11 +154,10 @@ class GestionarPersona {
 		
 				{
 				$this->limpiar();
-				echo "<center><div  class='alert alert-success'> SE HA ELIMINADO EL REGISTRO DE MANERA CORRECTA!! </div></center>";
 				} 
 				else 
 					{
-					echo  "<center><div class='alert alert-error'> NO FUE POSIBLE ELIMINAR EL REGISTRO, CONTACTE EL ADMINISTRADOR! (ERROR EN LA CONSULTA)</div></center>";
+					
 					}
 
 				$this->limpiar();
@@ -195,8 +192,7 @@ class GestionarPersona {
 			//$status = "<center><div  class='alert alert-info'>SU BÚSQUEDA NO ARROJÓ RESULTADOS, PRUEBE CON OTRO CRITERIO.</div></center>";	
 			$this->limpiar();
 				}
-			echo "$status";
-	  }
+				  }
 	  
 	public function limpiar()
 	  {

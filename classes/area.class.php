@@ -34,7 +34,6 @@ class area {
 				if(mysql_num_rows($this->stmt)) 
 				
 				{
-				echo "<center><div  class='alert alert-info'> LA PERSONA YA EXISTE EN EL SISTEMA !!</div></center>";	
 				return true;
 				}  
 				else
@@ -57,13 +56,12 @@ class area {
 			$this->stmt = $this->conexion->ejecutar($this->query);
 				if($this->stmt)
 				{
-				echo "<center><div  class='alert alert-success'> ".$this->AT_nombre_area." FUE REGISTRADO  EXITOSAMENTE! </div></center>";
-				$this->GT = new GestionarArea ($this->AT_id_area);
+							$this->GT = new GestionarArea ($this->AT_id_area);
 				return $this->GT -> consultar();		
 				}
 				else
 					{
-					echo "<center><div class='alert alert-error'> SE ENCONTRÓ UN ERROR INTENTANDO REALIZAR EL REGISTRO, CONTACTE EL ADMINISTRADOR! (ERROR EN LA CONSULTA)</div></center>";
+				
 					}
 					
 			}
@@ -84,15 +82,11 @@ class area {
 			
 			{
 			
-			echo "<center><div  class='alert alert-success'>LOS DATOS ".$this->AT_nombre_area." SE MODIFICARON SATISFACTORIAMENTE!</div></center>";
 			$this->GT = new GestionarArea($this->AT_id_area);
 			return $this->GT -> consultar();
 			}
 			else
-				{
-				echo $this->query ;
-				echo "<center><div class='alert alert-error'> NO FUE POSIBLE ACTUALIZAR LA INFORMACIÓN, CONTACTE EL ADMINISTRADOR! (ERROR EN LA CONSULTA)</div></center>";
-				}
+				
 
 	}
 }
@@ -126,17 +120,16 @@ class GestionarArea {
 				
 				{
 					$this->limpiar();
-					echo $this->p_id_area;
+					
 			
 					
-					echo "<center><div  class='alert alert-success'> SE HA ELIMINADO EL REGISTRO DE MANERA CORRECTA!! </div></center>";
+					
 					
 				} 
 				else 
 				{
 					
-					echo  "<center><div class='alert alert-error'> NO FUE POSIBLE ELIMINAR EL REGISTRO, CONTACTE EL ADMINISTRADOR! (ERROR EN LA CONSULTA)</div></center>";
-				
+					
 				}
 						
 
@@ -165,7 +158,6 @@ class GestionarArea {
 			$this->limpiar();	
 			
 			 }
-			echo "$status";
 			}
 	  
 	public function limpiar()

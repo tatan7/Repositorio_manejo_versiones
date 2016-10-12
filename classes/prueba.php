@@ -10,8 +10,6 @@
 <input type="submit" id="enviar"> 
 </form>  
 <? 
-echo "CORREO = ".$_POST["correo"];
-
 ?>
 </body>
 </html>
