@@ -25,7 +25,7 @@ class area {
 
 		$this->conexion = Conexion::getInstance();
 		}
-
+/// es el distinto manejo que se puede obtener 
 		public function Validar() 
 			{
 				$this->query = sprintf("SELECT ".$this->Cllave1." FROM ".$this->table." WHERE ".$this->Cllave1."= '%s' ", 
